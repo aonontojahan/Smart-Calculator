@@ -1,19 +1,31 @@
+# =========================
 # Python
+# =========================
 backend/.venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+backend/__pycache__/
+backend/**/*.pyc
+backend/alembic/versions/__pycache__/
 
-# Environment
-.env
-
+# =========================
 # Node
+# =========================
 frontend/node_modules/
+frontend/dist/
 
-# VSCode
-.vscode/
+# =========================
+# Environment
+# =========================
+.env
+backend/.env
+frontend/.env
 
+# =========================
 # OS
+# =========================
 .DS_Store
 Thumbs.db
+
+# =========================
+# VSCode
+# =========================
+.vscode/
