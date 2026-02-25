@@ -58,5 +58,6 @@ def login_user(
     access_token = create_access_token(
         data={"sub": str(user.id)}
     )
+    
 
     return AuthResponse(access_token=access_token)
