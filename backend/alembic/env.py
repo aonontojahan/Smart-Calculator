@@ -33,6 +33,7 @@ if config.config_file_name is not None:
 
 # -------------------------------------------------------------------------
 # Target metadata for autogenerate
+# Alembic uses this to compare the current database schema with the models defined in the code
 # -------------------------------------------------------------------------
 target_metadata = Base.metadata
 
