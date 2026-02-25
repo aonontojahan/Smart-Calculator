@@ -5,7 +5,7 @@ pwd_context = CryptContext(
     deprecated="auto"
 )
 
-
+# Utility functions for password hashing and verification
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
