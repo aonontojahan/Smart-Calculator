@@ -30,7 +30,7 @@ def get_current_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token payload"
         )
-
+    # Fetch the user from the database using the user ID from the token payload
     user = db.query(User).filter(User.id == user_id).first()
 
     if user is None:
