@@ -30,6 +30,8 @@ def register_user(
         email=request.email,
         password_hash=hashed_password
     )
+    
+    # Save the new user to the database
 
     db.add(new_user)
     db.commit()
