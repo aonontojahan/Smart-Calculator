@@ -8,7 +8,7 @@ from app.models.user import User
 
 security = HTTPBearer()
 
-
+# Dependency to get the current authenticated user based on the JWT token
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(security),
     db: Session = Depends(get_db)
