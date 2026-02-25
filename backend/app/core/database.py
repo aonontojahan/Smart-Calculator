@@ -20,6 +20,7 @@ Base = declarative_base()
 
 
 # Dependency for DB session
+# This function will be used in FastAPI endpoints to get a database session
 def get_db():
     db = SessionLocal()
     try:
