@@ -91,5 +91,6 @@ def delete_all_history(
     ).delete()
 
     db.commit()
+    
 
     return {"message": "All history cleared"}
