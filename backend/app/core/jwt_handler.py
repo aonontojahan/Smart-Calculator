@@ -27,7 +27,7 @@ def create_access_token(data: dict) -> str:
 
     return encoded_jwt
 
-
+# Function to verify the JWT token and return the payload if valid
 def verify_access_token(token: str):
     try:
         payload = jwt.decode(
