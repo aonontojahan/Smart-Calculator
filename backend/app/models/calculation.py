@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 
 from app.core.database import Base
 
-
+# SQLAlchemy model for storing calculation history in the database
 class Calculation(Base):
     __tablename__ = "calculations"
 
