@@ -17,6 +17,7 @@ sys.path.append(
 
 # -------------------------------------------------------------------------
 # Import Base metadata
+# Importing models to ensure they are registered with the Base metadata
 # -------------------------------------------------------------------------
 from app.core.database import Base
 from app import models
