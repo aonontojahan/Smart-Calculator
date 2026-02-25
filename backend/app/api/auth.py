@@ -7,7 +7,7 @@ from app.schemas.auth import RegisterRequest, LoginRequest, AuthResponse
 from app.core.security import hash_password, verify_password
 from app.core.jwt_handler import create_access_token
 
-
+# Routing for authentication-related endpoints
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 
