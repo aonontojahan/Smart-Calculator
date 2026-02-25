@@ -9,6 +9,7 @@ from alembic import context
 
 # -------------------------------------------------------------------------
 # Make sure app module is discoverable
+#Check if the parent directory of the current file is in sys.path, if not, add it
 # -------------------------------------------------------------------------
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
