@@ -10,7 +10,7 @@ def test_tokenizer(expression: str):
     tokens = tokenize(expression)
     return [repr(token) for token in tokens]
 
-
+# Test endpoint to check the shunting yard algorithm
 @router.get("/postfix")
 def test_postfix(expression: str):
     tokens = tokenize(expression)
