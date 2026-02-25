@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 
 from app.core.database import Base
 
-
+# SQLAlchemy model for storing user information in the database
 class User(Base):
     __tablename__ = "users"
 
