@@ -2,7 +2,7 @@ from pydantic import BaseModel, EmailStr
 from uuid import UUID
 from datetime import datetime
 
-
+# Pydantic models for authentication requests and responses
 class RegisterRequest(BaseModel):
     email: EmailStr
     password: str
