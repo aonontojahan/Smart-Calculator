@@ -6,6 +6,7 @@ from app.api import protected
 from app.api import test_engine
 from app.api import calculate
 
+# Main FastAPI application instance
 app = FastAPI(
     title="SmartCalc API",
     version="1.0.0"
