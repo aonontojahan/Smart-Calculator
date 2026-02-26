@@ -22,7 +22,6 @@ function App() {
 
       <Route
         path="/login"
-        
         element={
           token ? <Navigate to="/" replace /> : <Login />
         }
