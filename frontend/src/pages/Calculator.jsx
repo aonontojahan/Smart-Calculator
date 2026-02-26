@@ -242,7 +242,6 @@ function Calculator() {
                 key={btn}
                 onClick={() => handleClick(btn)}
                 className="bg-gray-300 dark:bg-white/20 hover:bg-gray-400 dark:hover:bg-white/30 text-gray-900 dark:text-white rounded-xl py-3 text-sm font-semibold shadow-md btn-press"
-                
               >
                 {btn}
               </button>
