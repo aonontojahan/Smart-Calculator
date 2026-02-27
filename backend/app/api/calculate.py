@@ -96,3 +96,4 @@ def delete_all_history(
 
     return {"message": "All history cleared"}
 # Note: The endpoints in this router are protected by the get_current_user dependency, which ensures that only authenticated users can access their calculation history and perform operations on it.
+# The evaluate endpoint allows users to evaluate mathematical expressions, and the history endpoints allow users to view and manage their past calculations.
