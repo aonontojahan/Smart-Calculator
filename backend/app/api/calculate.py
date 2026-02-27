@@ -13,6 +13,7 @@ from app.schemas.calculation import (
 from app.services.engine.evaluate import evaluate_expression
 
 # Routing for calculation-related endpoints
+# This router handles all endpoints related to evaluating expressions and managing calculation history for authenticated users.
 router = APIRouter(prefix="/calculate", tags=["Calculation"])
 
 
