@@ -64,3 +64,5 @@ def login_user(
     
 
     return AuthResponse(access_token=access_token)
+
+    # Note: The "sub" claim in the JWT token is set to the user's ID, which allows us to identify the user in subsequent requests.
