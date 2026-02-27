@@ -32,7 +32,7 @@ def register_user(
     )
     
     # Save the new user to the database
-
+    # This will automatically generate an 
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
