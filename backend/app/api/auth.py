@@ -32,7 +32,7 @@ def register_user(
     )
     
     # Save the new user to the database
-    # This will automatically generate an 
+    # This will automatically generate an ID for the user, which we can use in the JWT token
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
