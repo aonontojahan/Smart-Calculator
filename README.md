@@ -193,6 +193,9 @@ Full-Stack Developer
 source .venv/Scripts/activate
 python -m uvicorn app.main:app --reload
 
+- Forntend
+-cd /e/SmartCalc/frontend
+npm run dev
 
 ## 📄 License
 
