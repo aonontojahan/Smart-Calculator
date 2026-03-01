@@ -188,7 +188,7 @@ Full-Stack Developer
 ---
 
 ## ⭐ How to Run:
-- Backend:
+- Backend:(Run this below command in the backend)
 - cd /e/SmartCalc/backend
 - source .venv/Scripts/activate
 - python -m uvicorn app.main:app --reload
@@ -199,11 +199,14 @@ Full-Stack Developer
 
 ---
 
+## My Third Pull Request
+
+- I edited this file from test-ci branch and merged into main.
+
+---
+
 ## 📄 License
 
 
 MIT License
 
-# Test change
-
-## PR Flow Test Successful
