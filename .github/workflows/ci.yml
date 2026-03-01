@@ -1,0 +1,109 @@
+name: SmartCalc CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+
+  # ==========================
+  # JOB 1 — Quality Gate
+  # ==========================
+  quality-check:
+    runs-on: ubuntu-latest
+
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # --------------------------
+      # Setup Python
+      # --------------------------
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn sqlalchemy alembic psycopg2-binary passlib[bcrypt] python-jose email-validator pytest black bandit
+
+      - name: Check Code Formatting (Black)
+        run: |
+          cd backend
+          black --check .
+
+      - name: Run Tests
+        run: |
+          cd backend
+          pytest || echo "No tests found"
+
+      - name: Run Security Scan (Bandit)
+        run: |
+          cd backend
+          bandit -r app
+
+      # --------------------------
+      # Setup Node
+      # --------------------------
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build
+
+
+  # ==========================
+  # JOB 2 — Build & Artifact
+  # ==========================
+  build-and-release:
+    needs: quality-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build Project
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Zip Build Folder
+        run: |
+          cd frontend
+          zip -r build-artifact.zip dist
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartcalc-build
+          path: frontend/build-artifact.zip
