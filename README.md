@@ -187,6 +187,13 @@ Full-Stack Developer
 
 ---
 
+## ⭐ How to Run:
+- Backend:
+- cd /e/SmartCalc/backend
+source .venv/Scripts/activate
+python -m uvicorn app.main:app --reload
+
+
 ## 📄 License
 
 MIT License
