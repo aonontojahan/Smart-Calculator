@@ -1,17 +1,9 @@
 import re
 from typing import List
 
-
 OPERATORS = {"+", "-", "*", "/", "^", "%"}
-FUNCTIONS = {
-    "sin", "cos", "tan",
-    "sqrt", "log", "log10",
-    "ln", "factorial"
-}
-CONSTANTS = {
-    "pi": 3.141592653589793,
-    "e": 2.718281828459045
-}
+FUNCTIONS = {"sin", "cos", "tan", "sqrt", "log", "log10", "ln", "factorial"}
+CONSTANTS = {"pi": 3.141592653589793, "e": 2.718281828459045}
 
 
 TOKEN_REGEX = re.compile(
@@ -23,7 +15,7 @@ TOKEN_REGEX = re.compile(
     (?P<LPAREN>\() |
     (?P<RPAREN>\))
     """,
-    re.VERBOSE
+    re.VERBOSE,
 )
 
 

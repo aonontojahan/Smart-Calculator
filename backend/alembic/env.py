@@ -9,11 +9,9 @@ from alembic import context
 
 # -------------------------------------------------------------------------
 # Make sure app module is discoverable
-#Check if the parent directory of the current file is in sys.path, if not, add it
+# Check if the parent directory of the current file is in sys.path, if not, add it
 # -------------------------------------------------------------------------
-sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # -------------------------------------------------------------------------
 # Import Base metadata
@@ -77,4 +75,3 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
-    

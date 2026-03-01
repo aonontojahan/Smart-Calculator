@@ -4,11 +4,13 @@ from app.services.engine.shunting_yard import shunting_yard
 
 router = APIRouter(prefix="/test", tags=["Engine Test"])
 
+
 # Test endpoint to check the tokenizer and shunting yard algorithm
 @router.get("/tokenize")
 def test_tokenizer(expression: str):
     tokens = tokenize(expression)
     return [repr(token) for token in tokens]
+
 
 # Test endpoint to check the shunting yard algorithm
 @router.get("/postfix")
