@@ -9,32 +9,24 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
+
 # Function to create a JWT access token with the given data and expiration time
 def create_access_token(data: dict) -> str:
     to_encode = data.copy()
 
-    expire = datetime.utcnow() + timedelta(
-        minutes=ACCESS_TOKEN_EXPIRE_MINUTES
-    )
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
     to_encode.update({"exp": expire})
 
-    encoded_jwt = jwt.encode(
-        to_encode,
-        SECRET_KEY,
-        algorithm=ALGORITHM
-    )
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
     return encoded_jwt
+
 
 # Function to verify the JWT token and return the payload if valid
 def verify_access_token(token: str):
     try:
-        payload = jwt.decode(
-            token,
-            SECRET_KEY,
-            algorithms=[ALGORITHM]
-        )
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         return payload
     except Exception:
         return None

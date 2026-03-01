@@ -8,7 +8,7 @@ from app.models.user import User
 from app.schemas.calculation import (
     EvaluateRequest,
     EvaluateResponse,
-    CalculationHistoryResponse
+    CalculationHistoryResponse,
 )
 from app.services.engine.evaluate import evaluate_expression
 
@@ -21,7 +21,7 @@ router = APIRouter(prefix="/calculate", tags=["Calculation"])
 def evaluate(
     request: EvaluateRequest,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
 ):
     try:
         result = evaluate_expression(request.expression)
@@ -29,24 +29,18 @@ def evaluate(
         raise HTTPException(status_code=400, detail=str(e))
 
     calculation = Calculation(
-        expression=request.expression,
-        result=str(result),
-        user_id=current_user.id
+        expression=request.expression, result=str(result), user_id=current_user.id
     )
 
     db.add(calculation)
     db.commit()
 
-    return EvaluateResponse(
-        expression=request.expression,
-        result=result
-    )
+    return EvaluateResponse(expression=request.expression, result=result)
 
 
 @router.get("/history", response_model=list[CalculationHistoryResponse])
 def get_history(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    db: Session = Depends(get_db), current_user: User = Depends(get_current_user)
 ):
     history = (
         db.query(Calculation)
@@ -62,13 +56,12 @@ def get_history(
 def delete_single_history(
     calculation_id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
 ):
     calculation = (
         db.query(Calculation)
         .filter(
-            Calculation.id == calculation_id,
-            Calculation.user_id == current_user.id
+            Calculation.id == calculation_id, Calculation.user_id == current_user.id
         )
         .first()
     )
@@ -84,16 +77,14 @@ def delete_single_history(
 
 @router.delete("/history")
 def delete_all_history(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    db: Session = Depends(get_db), current_user: User = Depends(get_current_user)
 ):
-    db.query(Calculation).filter(
-        Calculation.user_id == current_user.id
-    ).delete()
+    db.query(Calculation).filter(Calculation.user_id == current_user.id).delete()
 
     db.commit()
-    
 
     return {"message": "All history cleared"}
+
+
 # Note: The endpoints in this router are protected by the get_current_user dependency, which ensures that only authenticated users can access their calculation history and perform operations on it.
 # The evaluate endpoint allows users to evaluate mathematical expressions, and the history endpoints allow users to view and manage their past calculations.

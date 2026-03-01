@@ -17,7 +17,7 @@ def apply_operator(operator: str, a: float, b: float) -> float:
     if operator == "%":
         return a % b
     if operator == "^":
-        return a ** b
+        return a**b
     raise ValueError(f"Unknown operator {operator}")
 
 
