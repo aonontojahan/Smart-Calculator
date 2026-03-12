@@ -187,18 +187,6 @@ Full-Stack Developer
 
 ---
 
-## ⭐ How to Run:
-- Backend:(Run this below command in the backend)
-- cd /e/SmartCalc/backend
-- source .venv/Scripts/activate
-- python -m uvicorn app.main:app --reload
-
-- Forntend
-- cd /e/SmartCalc/frontend
-- npm run dev
-
----
-
 ## Run the Project Locally
 
 ### 1. Clone the repository
