@@ -199,9 +199,29 @@ Full-Stack Developer
 
 ---
 
-## My Third Pull Request
+## Run the Project Locally
 
-- I edited this file from test-ci branch and merged into main.
+### 1. Clone the repository
+git clone https://github.com/aonontojahan/Smart-Calculator.git
+cd Smart-Calculator
+
+### 2. Start the backend
+cd backend
+python -m venv .venv
+source .venv/Scripts/activate
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+
+Backend will run at:
+http://127.0.0.1:8000
+
+### 3. Start the frontend (open new terminal)
+cd frontend
+npm install
+npm run dev
+
+Frontend will run at:
+http://localhost:5173
 
 ---
 
